@@ -1,0 +1,8 @@
+"dependencies": {
+  "react": "^18.2.0",
+  "react-dom": "^18.2.0",
+  "react-scripts": "5.0.1"  // Asegúrate de usar una versión compatible
+},
+"devDependencies": {
+  "@tauri-apps/cli": "^1.4.0"
+}
