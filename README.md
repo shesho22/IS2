@@ -3,7 +3,10 @@
 ## Proyecto 
 ### E.M.N.A.
 
-### Sergio 
+### Sergio Andres 
+
+## Entregables 
+1. [Entregable 1](https://github.com/shesho22/IS2/tree/master/ExtraClase)
 
 
 # Contenido 
