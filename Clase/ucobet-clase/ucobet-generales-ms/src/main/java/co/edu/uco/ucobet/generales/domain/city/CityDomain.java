@@ -37,4 +37,5 @@ public final class CityDomain extends Domain{
 		this.state = state;
 	}
 	
+
 }
