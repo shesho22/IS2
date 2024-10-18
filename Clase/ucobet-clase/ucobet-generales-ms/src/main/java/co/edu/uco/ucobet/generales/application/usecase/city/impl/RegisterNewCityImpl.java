@@ -1,5 +1,7 @@
 package co.edu.uco.ucobet.generales.application.usecase.city.impl;
 
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.edu.uco.ucobet.generales.application.secondaryports.entity.CityEntity;
@@ -13,6 +15,9 @@ public final class RegisterNewCityImpl implements RegisterNewCity{
 
 	private CityRepository cityRepository;
 	private RegisterNewCityRulesValidator registerNewCityRulesValidator;
+	
+	@Autowired
+	ModelMapper modelMapper;
 	
 	
 	public RegisterNewCityImpl(final CityRepository cityRepository,
@@ -28,7 +33,7 @@ public final class RegisterNewCityImpl implements RegisterNewCity{
 		//Rules validation 
 		registerNewCityRulesValidator.validate(domain);
 		//DataMapper -> Domain -> Entity 
-		final var cityEntity = CityEntity.create(null);
+		final var cityEntity = domainToEntity(domain);
 		
 		// Save city Entity 
 		cityRepository.save(cityEntity);
@@ -39,5 +44,8 @@ public final class RegisterNewCityImpl implements RegisterNewCity{
 		// el puerto del correo esta en un lugar parametizado (parameters building block) 
 	}
 
-	
+	public CityEntity domainToEntity(CityDomain domain) {
+		return modelMapper.map(domain,CityEntity.class);
+		
+	}
 }
