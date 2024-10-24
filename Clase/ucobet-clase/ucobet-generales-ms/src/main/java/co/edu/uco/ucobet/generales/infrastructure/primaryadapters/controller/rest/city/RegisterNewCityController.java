@@ -1,5 +1,6 @@
 package co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.rest.city;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,10 @@ public class RegisterNewCityController {
 	}
 
 
+    @GetMapping("/welcome")
+    public String home() {
+        return "Welcome to Ucobet!";
+    }
 
 	@PostMapping
 	public RegisterNewCityDTO execute(@RequestBody RegisterNewCityDTO dto) {

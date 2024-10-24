@@ -10,10 +10,12 @@ import co.edu.uco.ucobet.generales.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.TextHelper;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.criteria.Predicate;
 
 public final class CityRepositoryCustomImpl implements CityRepositoryCustom {
 
+	@PersistenceContext
     private EntityManager entityManager;
 
     public CityRepositoryCustomImpl(final EntityManager entityManager) {
