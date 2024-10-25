@@ -10,6 +10,7 @@ import co.edu.uco.ucobet.generales.domain.state.rules.StateDoesExistsRule;
 import co.edu.uco.ucobet.generales.domain.state.rules.StateIdIsNotDefaultValueRule;
 import co.edu.uco.ucobet.generales.domain.state.rules.SteteIdIsNotNullRule;
 
+
 public final class RegisterNewCityStateRuleValidatorImpl implements RegisterNewCityStateRulesValidator{
 
 

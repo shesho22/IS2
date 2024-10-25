@@ -9,11 +9,12 @@ class TipoUsuarioSerializer(serializers.ModelSerializer):
 
 class UsuarioSerializer(serializers.ModelSerializer):
     tipo_usuario = TipoUsuarioSerializer()  # Incluye los detalles del tipo de usuario
-
     class Meta:
         model = Usuario
-        fields = ['id', 'nombre', 'email', 'clave', 'fecha_registro', 'tipo_usuario', 'es_activo']  # Incluye 'id' para el usuario
-
+        fields = ['id', 'nombre', 'email', 'fecha_registro', 'tipo_usuario', 'es_activo']  # Incluye 'id' para el usuario
+        extra_kwargs={
+            'clave':{'write_only':True}
+        }
 
 class NotificacionSerializer(serializers.ModelSerializer):
     class Meta:

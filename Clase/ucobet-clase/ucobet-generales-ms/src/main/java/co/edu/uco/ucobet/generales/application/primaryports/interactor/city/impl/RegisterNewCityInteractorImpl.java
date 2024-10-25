@@ -14,9 +14,11 @@ public final class RegisterNewCityInteractorImpl implements RegisterNewCityInter
 	private RegisterNewCity registerNewCity;
 	private ModelMapper modelMapper;
 	
-	public RegisterNewCityInteractorImpl(final RegisterNewCity registerNewCity) {
-		this.registerNewCity = registerNewCity;
+	public RegisterNewCityInteractorImpl(final RegisterNewCity registerNewCity, final ModelMapper modelMapper) {
+	    this.registerNewCity = registerNewCity;
+	    this.modelMapper = modelMapper;
 	}
+
 	
 	@Override
 	public void execute(final RegisterNewCityDTO data) {

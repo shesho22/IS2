@@ -3,6 +3,7 @@ package co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.data.sql.re
 import java.util.ArrayList;
 import java.util.List;
 
+
 import co.edu.uco.ucobet.generales.application.secondaryports.entity.CityEntity;
 import co.edu.uco.ucobet.generales.application.secondaryports.repository.CityRepositoryCustom;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.RepositoryUcobetException;

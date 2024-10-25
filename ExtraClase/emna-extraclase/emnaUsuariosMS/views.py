@@ -1,9 +1,10 @@
 from django.http import HttpResponse, JsonResponse
 from .models import Usuario
-from .serializers import *
 from django.shortcuts import get_list_or_404
-from rest_framework.decorators import api_view
 from rest_framework import status
+from.serializers import UsuarioSerializer
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 # Create your views here.
 def hola(request,name):
@@ -17,13 +18,6 @@ def about(request):
 def usuarios(request):
     return HttpResponse("usuarios")
 
-@api_view(['POST'])
-def crear_usuario(request):
-    serializers = UsuarioSerializer(data=request.data)
-    if serializers.is_valid():
-        usuario = serializers.save()
-        return JsonResponse({'message':'Usuario creado exitosamente','id':usuario.id},status=status.HTTP_201_CREATED)
-    return JsonResponse(serializers.errors,status=status.HTTP_400_BAD_REQUEST)
 
 def tipoUsuarios(request):
     return HttpResponse("tipoUsuario")
@@ -39,3 +33,12 @@ def invitaciones(request):
 
 def tipoInvitaciones(request):
     return HttpResponse("tipoInvitaciones")
+
+class UsuarioCreate(APIView):
+    def post(self,request):
+        serializer = UsuarioSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data,status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+    

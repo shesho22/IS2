@@ -27,6 +27,7 @@ public final class RegisterNewCityImpl implements RegisterNewCity{
 		this.modelMapper = modelMapper;
 	}
 
+
 	@Override
 	public void execute(final CityDomain domain) {
 		

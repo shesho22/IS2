@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.uco.ucobet.generales.application.primaryports.dto.RegisterNewCityDTO;
 import co.edu.uco.ucobet.generales.application.primaryports.interactor.city.RegisterNewCityInteractor;
+import co.edu.uco.ucobet.generales.application.usecase.city.impl.RegisterNewCityImpl;
 
 @RestController
 @RequestMapping("/general/api/v1/cities")
 public class RegisterNewCityController {
 	
 	private RegisterNewCityInteractor registerNewCityInteractor;
+	//private RegisterNewCityImpl registerNewCityImpl; (el interactor debe llamar el caso de uso. el error es porque el caso se uso no se esta llamado y por eso su eliminacion soluciona el error)
 	
 	
 	
