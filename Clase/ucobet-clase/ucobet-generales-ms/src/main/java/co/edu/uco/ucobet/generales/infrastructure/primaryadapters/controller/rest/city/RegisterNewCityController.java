@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.uco.ucobet.generales.application.primaryports.dto.RegisterNewCityDTO;
 import co.edu.uco.ucobet.generales.application.primaryports.interactor.city.RegisterNewCityInteractor;
-import co.edu.uco.ucobet.generales.application.usecase.city.impl.RegisterNewCityImpl;
 
 @RestController
 @RequestMapping("/general/api/v1/cities")

@@ -11,6 +11,7 @@ import co.edu.uco.ucobet.generales.domain.city.CityDomain;
 
 @Service
 public final class RegisterNewCityInteractorImpl implements RegisterNewCityInteractor{
+	
 	private RegisterNewCity registerNewCity;
 	private ModelMapper modelMapper;
 	

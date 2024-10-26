@@ -6,5 +6,5 @@ import co.edu.uco.ucobet.generales.domain.city.CityDomain;
 
 
 public interface RegisterNewCity extends UseCaseWhithoutReturn<CityDomain>{
-
+	
 }
