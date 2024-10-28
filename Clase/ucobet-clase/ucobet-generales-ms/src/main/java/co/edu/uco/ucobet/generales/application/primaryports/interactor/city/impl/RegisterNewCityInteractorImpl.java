@@ -2,23 +2,24 @@ package co.edu.uco.ucobet.generales.application.primaryports.interactor.city.imp
 
 
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import co.edu.uco.ucobet.generales.application.primaryports.dto.RegisterNewCityDTO;
 import co.edu.uco.ucobet.generales.application.primaryports.interactor.city.RegisterNewCityInteractor;
 import co.edu.uco.ucobet.generales.application.usecase.city.RegisterNewCity;
 import co.edu.uco.ucobet.generales.domain.city.CityDomain;
 
+@Service
 public final class RegisterNewCityInteractorImpl implements RegisterNewCityInteractor{
 	
 	private RegisterNewCity registerNewCity;
+	private ModelMapper modelMapper;
 	
-	@Autowired
-	ModelMapper modelMapper;
-	
-	public RegisterNewCityInteractorImpl(final RegisterNewCity registerNewCity) {
-		this.registerNewCity = registerNewCity;
+	public RegisterNewCityInteractorImpl(final RegisterNewCity registerNewCity, final ModelMapper modelMapper) {
+	    this.registerNewCity = registerNewCity;
+	    this.modelMapper = modelMapper;
 	}
+
 	
 	@Override
 	public void execute(final RegisterNewCityDTO data) {

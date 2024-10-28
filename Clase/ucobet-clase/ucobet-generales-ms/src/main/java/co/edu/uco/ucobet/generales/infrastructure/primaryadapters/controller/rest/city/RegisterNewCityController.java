@@ -1,5 +1,6 @@
 package co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.rest.city;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import co.edu.uco.ucobet.generales.application.primaryports.interactor.city.Regi
 public class RegisterNewCityController {
 	
 	private RegisterNewCityInteractor registerNewCityInteractor;
+	//private RegisterNewCityImpl registerNewCityImpl; (el interactor debe llamar el caso de uso. el error es porque el caso se uso no se esta llamado y por eso su eliminacion soluciona el error)
 	
 	
 	
@@ -21,6 +23,10 @@ public class RegisterNewCityController {
 	}
 
 
+    @GetMapping("/welcome")
+    public String home() {
+        return "Welcome to Ucobet!";
+    }
 
 	@PostMapping
 	public RegisterNewCityDTO execute(@RequestBody RegisterNewCityDTO dto) {

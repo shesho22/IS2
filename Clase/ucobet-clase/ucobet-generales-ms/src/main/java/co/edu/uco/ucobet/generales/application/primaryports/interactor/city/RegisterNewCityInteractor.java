@@ -10,5 +10,4 @@ import jakarta.transaction.Transactional;
 @Transactional
 public interface RegisterNewCityInteractor extends InteractorWhitoutReturn<RegisterNewCityDTO>{
 	
-
 }
