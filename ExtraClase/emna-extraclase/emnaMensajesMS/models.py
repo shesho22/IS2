@@ -20,7 +20,7 @@ class Conversacion(models.Model):
     usuario1 = models.ForeignKey('emnaUsuariosMS.Usuario', on_delete=models.CASCADE, related_name='conversaciones_usuario1')
     usuario2 = models.ForeignKey('emnaUsuariosMS.Usuario', on_delete=models.CASCADE, related_name='conversaciones_usuario2')
     titulo = models.CharField(max_length=255)  
-    diario = models.CharField(max_length=255)  
+    descripcion = models.CharField(max_length=255)  
     es_activo = models.BooleanField(default=True)
     vigencia = models.DateTimeField(null=True, blank=True)
     
