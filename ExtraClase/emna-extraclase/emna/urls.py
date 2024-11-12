@@ -18,8 +18,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('',include('emnaUsuariosMS.urls')),
-    path('',include('emnaSeguridadMS.urls')),
-    path('',include('emnaMensajesMS.urls'))
+    path('admin/', admin.site.urls),  # URL para el panel de administración
+    path('mensaje/', include('emnaMensajesMS.urls')),
+    path('seguridad/', include('emnaSeguridadMS.urls')),
+    path('usuario/', include('emnaUsuariosMS.urls')),
 ]
