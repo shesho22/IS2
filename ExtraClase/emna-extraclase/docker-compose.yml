@@ -1,0 +1,73 @@
+version: '3.8'
+
+services:
+  # Servicio para la aplicación Django
+  django:
+    image: django:latest  # Cambia esto a la imagen de Django si tienes un Dockerfile
+    container_name: django_app
+    environment:
+      - DEBUG=1
+      - DATABASE_URL=postgres://postgres:password@postgres_db:5432/mydb  # Ajusta según tu configuración
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app  # Asumiendo que tu código está en el directorio actual
+    networks:
+      - kong_net
+    depends_on:
+      - postgres_db
+    command: python manage.py runserver 0.0.0.0:8000  # Inicia Django
+
+  # Servicio para PostgreSQL
+  postgres_db:
+    image: postgres:13
+    container_name: postgres_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=mydb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - kong_net
+
+  # Servicio para Kong Gateway
+  kong_gateway:
+    image: kong:3.0
+    container_name: kong_gateway
+    environment:
+      - KONG_DATABASE=postgres
+      - KONG_PG_HOST=postgres_db
+      - KONG_PG_PASSWORD=password
+    ports:
+      - "8001:8001"
+      - "8000:8000"
+      - "8443:8443"
+      - "8444:8444"
+    networks:
+      - kong_net
+    depends_on:
+      - postgres_db
+
+  # Servicio para Konga (interfaz de administración de Kong)
+  konga:
+    image: pantsel/konga
+    container_name: konga
+    environment:
+      - "KONGA_HOST=http://konga:1337"
+      - "KONGA_PORT=1337"
+      - "KONGA_GATEWAY_URL=http://kong_gateway:8000"
+    ports:
+      - "1337:1337"
+    networks:
+      - kong_net
+    depends_on:
+      - kong_gateway
+
+networks:
+  kong_net:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local
