@@ -1,0 +1,128 @@
+{
+  "version": 3,
+  "name": "Django API Gateway",
+  "port": 8082,
+  "endpoints": [
+    {
+      "endpoint": "/mensaje/mensajes",
+      "method": "GET",
+      "backend": [
+        {
+          "url_pattern": "/mensaje/mensajes/?format=json",
+          "host": ["https://127.0.0.1:8000"],
+          "disable_ssl_verification": true
+        }
+      ]
+    },
+    {
+      "endpoint": "/mensaje/tipos_mensaje",
+      "method": "GET",
+      "backend": [
+        {
+          "url_pattern": "/mensaje/tipos_mensaje/?format=json",
+          "host": ["https://127.0.0.1:8000"],
+          "disable_ssl_verification": true
+        }
+      ]
+    },
+    {
+      "endpoint": "/mensaje/conversaciones",
+      "method": "GET",
+      "backend": [
+        {
+          "url_pattern": "/mensaje/conversaciones/?format=json",
+          "host": ["https://127.0.0.1:8000"],
+          "disable_ssl_verification": true
+        }
+      ]
+    },
+    {
+      "endpoint": "/seguridad/diarios",
+      "method": "GET",
+      "backend": [
+        {
+          "url_pattern": "/seguridad/diarios/?format=json",
+          "host": ["https://127.0.0.1:8000"],
+          "disable_ssl_verification": true
+        }
+      ]
+    },
+    {
+      "endpoint": "/seguridad/paginas",
+      "method": "GET",
+      "backend": [
+        {
+          "url_pattern": "/seguridad/paginas/?format=json",
+          "host": ["https://127.0.0.1:8000"],
+          "disable_ssl_verification": true
+        }
+      ]
+    },
+    { 
+      "endpoint": "/usuario/usuarios", 
+      "method": "GET",
+      "backend": [ 
+        { 
+          "url_pattern": "/usuario/usuarios/?format=json", 
+          "host": ["https://127.0.0.1:8000"],
+          "disable_ssl_verification": true
+        }
+      ]
+    },
+    {
+      "endpoint": "/usuario/tipos_usuario",
+      "method": "GET",
+      "backend": [
+        {
+          "url_pattern": "/usuario/tipos_usuario/?format=json",
+          "host": ["https://127.0.0.1:8000"],
+          "disable_ssl_verification": true
+        }
+      ]
+    },
+    {
+      "endpoint": "/usuario/notificaciones",
+      "method": "GET",
+      "backend": [
+        {
+          "url_pattern": "/usuario/notificaciones/?format=json",
+          "host": ["https://127.0.0.1:8000"],
+          "disable_ssl_verification": true
+        }
+      ]
+    },
+    {
+      "endpoint": "/usuario/tipos_notificacion",
+      "method": "GET",
+      "backend": [
+        {
+          "url_pattern": "/usuario/tipos_notificacion/?format=json",
+          "host": ["https://127.0.0.1:8000"],
+          "disable_ssl_verification": true
+        }
+      ]
+    },
+    {
+      "endpoint": "/usuario/invitaciones",
+      "method": "GET",
+      "backend": [
+        {
+          "url_pattern": "/usuario/invitaciones/?format=json",
+          "host": ["https://127.0.0.1:8000"],
+          "disable_ssl_verification": true
+        }
+      ]
+    },
+    {
+      "endpoint": "/usuario/tipos_invitacion",
+      "method": "GET",
+      "backend": [
+        {
+          "url_pattern": "/usuario/tipos_invitacion/?format=json",
+          "host": ["https://127.0.0.1:8000"],
+          "disable_ssl_verification": true
+        }
+      ]
+    }
+  ]
+}

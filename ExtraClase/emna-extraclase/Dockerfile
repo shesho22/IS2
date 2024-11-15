@@ -1,21 +1,20 @@
-# Usar la imagen oficial de Python 3.12.7 como base
-FROM python:3.12.7-slim
+# Usa una imagen base con Python
+FROM python:3.12.7
 
-# Establecer el directorio de trabajo
+# Establece el directorio de trabajo
 WORKDIR /app
 
-# Copiar los archivos de la aplicación en el contenedor
+# Copia los archivos del proyecto
 COPY . /app/
 
-# Crear un entorno virtual y activar el entorno
-RUN python3 -m venv /venv
-RUN /venv/bin/pip install --no-cache-dir -r requirements.txt
+# Crea un entorno virtual
+RUN python -m venv /venv
 
-# Establecer la variable de entorno para usar el entorno virtual
-ENV PATH="/venv/bin:$PATH"
+# Activa el entorno virtual e instala las dependencias
+RUN /venv/bin/pip install -r requirements.txt
 
-# Exponer el puerto 8000 para acceder a la aplicación Django
+# Expón el puerto en el que Django escuchará
 EXPOSE 8000
 
-# Comando para iniciar el servidor de desarrollo de Django
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# Ejecuta el servidor de Django
+CMD ["/venv/bin/python", "manage.py", "runserver", "0.0.0.0:8000"]

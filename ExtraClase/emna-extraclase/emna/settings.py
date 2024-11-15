@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'rest_framework',
+    'corsheaders',
     'emnaMensajesMS',
     'emnaSeguridadMS',
     'emnaUsuariosMS',
@@ -58,11 +59,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'emna.urls'
 
-
+CORS_ORIGIN_ALLOW_ALL = False  # Mejor no permitir todas las solicitudes
+CORS_ALLOWED_ORIGINS = [
+    "https://localhost:8080",  # Cambia esto a la URL de KrakenD que esté usando HTTPS
+]
 
 # Configuración de plantillas (templates)
 TEMPLATES = [

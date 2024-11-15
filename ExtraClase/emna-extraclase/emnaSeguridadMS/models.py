@@ -5,7 +5,7 @@ from django.utils import timezone
 class Diario(models.Model):
     nombre = models.CharField(max_length=255)  
     conversacion = models.ForeignKey('emnaMensajesMS.Conversacion', on_delete=models.CASCADE, related_name='diarios') 
-    fecha_creacion = models.DateTimeField(default=timezone.now)  
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
     es_activo = models.BooleanField(default=True) 
     vigencia = models.DateTimeField(null=True, blank=True)  
 
