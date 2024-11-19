@@ -1,5 +1,7 @@
 from django.db import models
+from cryptography.fernet import Fernet
 from django.utils import timezone
+from django.contrib.auth.hashers import make_password, check_password
 
 # Create your models here.
 class Usuario(models.Model):
@@ -9,6 +11,11 @@ class Usuario(models.Model):
     fecha_registro = models.DateTimeField(auto_now_add=True)
     tipo_usuario = models.ForeignKey('TipoUsuario', on_delete=models.CASCADE, related_name='usuarios')
     es_activo = models.BooleanField(default=True)
+    def set_password(self, raw_password):
+        self.clave = make_password(raw_password)
+    def check_password(self, raw_password):
+        return check_password(raw_password, self.clave)
+     
 
 
 class TipoUsuario(models.Model):

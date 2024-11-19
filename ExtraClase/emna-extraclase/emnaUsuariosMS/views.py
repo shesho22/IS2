@@ -14,6 +14,15 @@ from .serializers import (
 class UsuarioViewSet(viewsets.ModelViewSet):
     queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
+    def perform_create(self, serializer):
+        # Obtener la contraseña del request
+        raw_password = self.request.data.get('clave')
+        # Crear el usuario, pero sin guardar la contraseña
+        usuario = serializer.save()
+        # Usar el método set_password para cifrar la contraseña
+        if raw_password:
+            usuario.set_password(raw_password)
+            usuario.save()
 
 # Vista para el modelo TipoUsuario
 class TipoUsuarioViewSet(viewsets.ModelViewSet):
@@ -34,16 +43,18 @@ class TipoNotificacionViewSet(viewsets.ModelViewSet):
 class InvitacionViewSet(viewsets.ModelViewSet):
     queryset = Invitacion.objects.all()
     serializer_class = InvitacionSerializer
-        # Sobrescribimos el método `perform_create` para enviar el correo al crear una invitación
     def perform_create(self, serializer):
         # Guardamos la invitación
         invitacion = serializer.save()
-        # Enviar la invitación por correo después de guardarla
-        usuario_envia = self.request.user.username  # Asumimos que el usuario que hace la solicitud es quien envía
-        email_invitado = invitacion.email  # Suponemos que el campo 'email' de la invitación contiene el correo del destinatario
-        mensaje_personalizado = invitacion.mensaje_personalizado  # El mensaje que se incluye en la invitación
-        # Llamamos a la función para enviar el correo
+        # Asumimos que el usuario que hace la solicitud es quien envía la invitación
+        usuario_envia = self.request.user.username
+        # Suponemos que el campo 'email' de la invitación contiene el correo del destinatario
+        email_invitado = invitacion.email
+        # El mensaje personalizado que se incluye en la invitación
+        mensaje_personalizado = invitacion.mensaje_personalizado
+        # Llamamos a la función para enviar la invitación por correo
         enviar_invitacion(usuario_envia, email_invitado, mensaje_personalizado)
+
 
 # Vista para el modelo TipoInvitacion
 class TipoInvitacionViewSet(viewsets.ModelViewSet):
